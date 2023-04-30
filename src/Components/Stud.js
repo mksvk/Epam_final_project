@@ -7,7 +7,8 @@ const StudentTable = ({ students }) => {
     const [sortOption, setSortOption] = useState("");
     const [searchValue, setSearchValue] = useState("");
     const [isOpen, setIsOpen] = useState(false);
-    const [studentIndexForDetails,setStudentIndexForDetails] = useState(0)
+    // const [studentIndexForDetails,setStudentIndexForDetails] = useState(0)
+    const [detalsbar , setDetailsbar] = useState({})
 
     const toggleBox = () => {
       setIsOpen(!isOpen);
@@ -75,10 +76,15 @@ const StudentTable = ({ students }) => {
       }
 
       function individualStudentDetails(x){
-        setStudentIndexForDetails(x.id - 1)
+        // setStudentIndexForDetails(x.id - 1)
+
+        setDetailsbar(x)
+        
+
+
         setIsOpen(true)
 
-        console.log(x)
+        // console.log(x)
        
        
 
@@ -88,9 +94,8 @@ const StudentTable = ({ students }) => {
      
   return (
     <>
-  {console.log(filteredStudents)}
-
   <div className="my-5">
+
         <span className=" text-white mr-2 lg:px-6 px-2 lg:py-2 bg-blue-500 hover:bg-blue-800 cursor-pointer ml-6" onClick={()=>changeFilterOption('all')}>All</span>
         <span className=" text-white mr-2 lg:px-6 px-2 lg:py-2 bg-blue-500 hover:bg-blue-800 cursor-pointer" onClick={()=>changeFilterOption('passed')}>Passed</span>
         <span className=" text-white mr-2 lg:px-6 px-2 lg:py-2 bg-blue-500 hover:bg-blue-800 cursor-pointer" onClick={()=>changeFilterOption('failed')}>Failed</span>
@@ -118,7 +123,7 @@ const StudentTable = ({ students }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-gray-900 bg-opacity-50">
           <div className="bg-white rounded-lg p-9 m-4 max-w-md mx-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">{filteredStudents[studentIndexForDetails].name}</h2>
+              <h2 className="text-2xl font-bold">{detalsbar.name}</h2>
               <button
                 className="text-gray-500 hover:text-gray-600"
                 onClick={toggleBox}
@@ -140,35 +145,35 @@ const StudentTable = ({ students }) => {
             <div className="mb-4">
               <p>
                 <span className="font-bold">ID: </span>
-                {filteredStudents[studentIndexForDetails].id}
+                {detalsbar.id}
               </p>
               <p>
                 <span className="font-bold">Ticket Number: </span>
-                {filteredStudents[studentIndexForDetails].ticketNumber}
+                {detalsbar.ticketNumber}
               </p>
               <p>
                 <span className="font-bold">Ticket Topic: </span>
-                {filteredStudents[studentIndexForDetails].ticketTopic}
+                {detalsbar.ticketTopic}
               </p>
               <p>
                 <span className="font-bold">Exam Grade: </span>
-                {filteredStudents[studentIndexForDetails].examGrade}
+                {detalsbar.examGrade}
               </p>
               <p>
                 <span className="font-bold">Rating Grade: </span>
-                {filteredStudents[studentIndexForDetails].ratingGrade}
+                {detalsbar.ratingGrade}
               </p>
               <p>
                 <span className="font-bold">Final Grade: </span>
-                {filteredStudents[studentIndexForDetails].finalGrade}
+                {detalsbar.finalGrade}
               </p>
               <p>
                 <span className="font-bold">Status: </span>
-                {filteredStudents[studentIndexForDetails].status}
+                {detalsbar.status}
               </p>
               <p>
                 <span className="font-bold">comments: </span>
-                {filteredStudents[studentIndexForDetails].comments}
+                {detalsbar.comments}
               </p>
             </div>
           </div>
