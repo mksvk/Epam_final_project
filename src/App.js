@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './App.css';
 import Triel from "./Components/Triel"
 import Stud from './Components/Stud';
